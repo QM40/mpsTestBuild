@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Martinez Pro Services</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pine:#121212;
+    --pine-light:#1E1E1E;
+    --paper:#F8F8F5;
+    --paper-warm:#E3E1DA;
+    --moss:#355E2B;
+    --ochre:#B7B3AA;
+    --ochre-light:#E4E2DB;
+    --gold:#84D122;
+    --stone:#5A584F;
+    --stone-bg:#D9D7D1;
+    --ink:#121212;
+    --line:rgba(34,39,31,0.18);
+    --line-light:rgba(238,232,218,0.25);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Work Sans',sans-serif;
+    line-height:1.55;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    margin:0;
+    color:var(--pine);
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 32px;}
+  .rule{height:1px;background:var(--line);border:none;margin:0;}
+  .rule-light{height:1px;background:var(--line-light);border:none;margin:0;}
+
+  /* ---------- header ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:var(--paper);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    position:relative;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:20px 32px;
+    gap:16px;
+  }
+  .logo{display:flex;align-items:center;gap:10px;}
+  .logo-mark{width:30px;height:30px;flex-shrink:0;}
+  .logo-text{font-family:'Fraunces',serif;font-weight:500;font-size:20px;color:var(--pine);}
+  .nav-links{display:flex;align-items:center;gap:36px;}
+  .nav-links a{font-size:15px;color:var(--pine);}
+  .nav-links a:hover{color:var(--moss);}
+  .phone-pill{
+    display:flex;align-items:center;gap:8px;
+    border:1px solid var(--pine);
+    border-radius:999px;
+    padding:9px 18px;
+    font-size:14px;font-weight:500;
+    color:var(--pine);
+    white-space:nowrap;
+  }
+  .phone-pill:hover{background:var(--pine);color:var(--paper);}
+  .nav-right{display:flex;align-items:center;gap:14px;}
+  .nav-toggle{
+    display:none;flex-direction:column;justify-content:center;gap:5px;
+    width:36px;height:36px;background:none;border:none;cursor:pointer;padding:0;
+  }
+  .nav-toggle span{width:22px;height:2px;background:var(--pine);display:block;}
+
+  /* ---------- hero ---------- */
+  .hero{
+    display:grid;grid-template-columns:1.1fr 1fr;align-items:center;
+    gap:40px;
+    padding:76px 0 0;
+  }
+  .hero-copy{padding-bottom:64px;}
+  .hero-copy h1{font-size:52px;line-height:1.08;max-width:520px;}
+  .hero-copy p{font-size:17px;max-width:440px;margin:22px 0 0;color:var(--ink);opacity:0.85;}
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px;}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;
+    padding:14px 26px;
+    font-size:15px;font-weight:500;
+    border-radius:4px;
+    cursor:pointer;
+    border:1px solid transparent;
+  }
+  .btn-primary{background:var(--gold);color:var(--pine);}
+  .btn-primary:hover{background:#6FA81D;}
+  .btn-secondary{border-color:var(--pine);color:var(--pine);}
+  .btn-secondary:hover{background:var(--pine);color:var(--paper);}
+  .btn-call-dark{
+    margin-top:28px;
+    border-color:rgba(238,232,218,0.35);
+    color:var(--paper);
+    background:transparent;
+  }
+  .btn-call-dark:hover{border-color:var(--paper);background:rgba(238,232,218,0.08);}
+  .hero-art{align-self:stretch;position:relative;overflow:hidden;border-radius:6px;margin-bottom:40px;}
+  .hero-slide{
+    position:absolute;inset:0;
+    background-size:cover;background-position:center;
+    opacity:0;transition:opacity 1.2s ease;
+  }
+  .hero-slide.active{opacity:1;}
+  .hero-nav{
+    position:absolute;top:50%;transform:translateY(-50%);
+    width:36px;height:36px;border-radius:50%;
+    background:rgba(18,18,18,0.45);color:var(--paper);
+    border:none;cursor:pointer;z-index:3;
+    display:flex;align-items:center;justify-content:center;
+    font-size:18px;line-height:1;
+    transition:background 0.2s ease;
+  }
+  .hero-nav:hover{background:rgba(18,18,18,0.75);}
+  .hero-nav.prev{left:14px;}
+  .hero-nav.next{right:14px;}
+
+  .stat-strip{
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .stat-strip .wrap{
+    display:flex;
+    padding:32px 32px;
+  }
+  .stat{
+    display:flex;flex-direction:column;gap:5px;
+    flex:1;padding-right:24px;
+  }
+  .stat:not(:first-child){
+    border-left:1px solid var(--line);
+    padding-left:24px;
+  }
+  .stat b{
+    font-family:'Fraunces',serif;font-size:22px;font-weight:500;
+    color:var(--pine);line-height:1.15;
+  }
+  .stat span{font-size:13px;color:var(--stone);}
+
+  /* ---------- section headers ---------- */
+  .section-head{padding:88px 0 8px;}
+  .section-head h2{font-size:36px;max-width:560px;}
+  .section-head p{max-width:480px;margin:16px 0 0;color:var(--ink);opacity:0.8;font-size:16px;}
+
+  /* ---------- portfolio rows ---------- */
+  .service-row{
+    display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;
+    padding:56px 0;
+    scroll-margin-top: 90px;
+  }
+  .service-row:not(:last-child){border-bottom:1px solid var(--line);}
+  .service-row.reverse{direction:rtl;}
+  .service-row.reverse > *{direction:ltr;}
+  .service-photo{
+    position:relative;aspect-ratio:4/3;border-radius:6px;overflow:hidden;
+    cursor:pointer;
+  }
+  .service-photo .base,.service-photo .after{
+    position:absolute;inset:0;
+  }
+  .service-photo .base > div, .service-photo .after > div{
+    min-width:100%;height:100%;position:absolute;inset:0;
+    background-size:cover;background-position:center;
+  }
+  .service-photo .after{
+    width:0%;overflow:hidden;
+    transition:width 0.5s cubic-bezier(.4,0,.2,1);
+    border-right:2px solid var(--gold);
+  }
+  .service-photo:hover .after{width:100%;}
+  .service-tag{
+    position:absolute;top:14px;left:16px;
+    font-size:11px;font-weight:500;color:var(--paper);
+    background:rgba(27,46,34,0.55);
+    padding:5px 10px;border-radius:3px;
+  }
+  .service-tag.after-tag{
+    left:auto;right:16px;
+    background:var(--gold);color:var(--pine);
+    font-size:11px;font-weight:500;
+  }
+  .photo-hint{
+    position:absolute;bottom:14px;right:16px;z-index:2;
+    font-size:12px;font-weight:600;letter-spacing:0.02em;
+    color:var(--paper);
+    background:rgba(18,18,18,0.88);
+    padding:7px 13px;border-radius:3px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.25);
+    pointer-events:none;transition:opacity 0.25s ease;
+  }
+  .photo-hint.before-label{opacity:0;}
+  .service-photo:hover .photo-hint.hover-hint{opacity:0;}
+  .service-photo:hover .photo-hint.before-label{opacity:1;}
+
+  .service-photo-mobile{display:none;}
+  .mobile-photo-item{
+    position:relative;aspect-ratio:4/3;border-radius:6px;overflow:hidden;
+  }
+  .mobile-photo-item img{width:100%;height:100%;object-fit:cover;display:block;}
+  .mobile-tag{
+    position:absolute;top:12px;left:14px;z-index:2;
+    font-size:12px;font-weight:600;letter-spacing:0.02em;
+    color:var(--paper);
+    background:rgba(18,18,18,0.88);
+    padding:6px 12px;border-radius:3px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.25);
+  }
+  .mobile-tag.mobile-tag-after{
+    background:var(--gold);color:var(--pine);
+    box-shadow:none;
+    font-size:12px;font-weight:600;letter-spacing:0.02em;
+  }
+  .service-text h3{font-size:26px;margin-bottom:12px;}
+  .service-text p{font-size:15px;color:var(--ink);opacity:0.82;max-width:400px;margin-bottom:18px;}
+  .service-link{font-size:14px;font-weight:500;color:var(--moss);border-bottom:1px solid var(--moss);padding-bottom:2px;}
+  .service-link:hover{color:var(--pine);border-color:var(--pine);}
+
+  .more-services{
+    border-top:1px solid var(--line);
+    padding:36px 0 72px;
+    display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
+  }
+  .more-services p{
+    font-family:'Fraunces',serif;font-weight:500;
+    font-size:22px;color:var(--pine);opacity:1;margin:0;max-width:520px;
+  }
+  .more-services .service-link{
+    white-space:nowrap;font-size:15px;
+  }
+
+  /* ---------- quote section ---------- */
+  .quote-section{background:var(--pine);color:var(--paper);padding:88px 0;margin-top:88px;scroll-margin-top:90px;}
+  .quote-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:64px;}
+  .quote-grid h2{color:var(--paper);font-size:34px;max-width:380px;}
+  .quote-grid > div:first-child p{color:var(--paper);opacity:0.75;font-size:16px;margin:18px 0 28px;max-width:360px;}
+  .trust-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:14px;}
+  .trust-list li{display:flex;gap:12px;align-items:flex-start;font-size:14px;color:var(--paper);opacity:0.85;}
+  .trust-list li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold);margin-top:7px;flex-shrink:0;}
+
+  form{display:flex;flex-direction:column;gap:16px;}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  label{font-size:13px;color:var(--paper);opacity:0.75;margin-bottom:6px;display:block;}
+  input,select,textarea{
+    width:100%;
+    background:var(--pine-light);
+    border:1px solid rgba(238,232,218,0.28);
+    border-radius:4px;
+    padding:12px 14px;
+    color:var(--paper);
+    font-family:'Work Sans',sans-serif;
+    font-size:14px;
+  }
+  input::placeholder,textarea::placeholder{color:rgba(238,232,218,0.4);}
+  input:focus,select:focus,textarea:focus{outline:2px solid var(--gold);outline-offset:1px;}
+  textarea{resize:vertical;min-height:88px;}
+  .form-note{font-size:12px;color:rgba(238,232,218,0.6);}
+  .quote-submit{align-self:flex-start;margin-top:6px;}
+
+  /* ---------- why us ---------- */
+  .why-us{background:var(--stone-bg);padding:88px 0;margin-top:88px;scroll-margin-top:90px;}
+  .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:44px;}
+  .why-item h3{font-size:21px;margin-bottom:10px;}
+  .why-item p{font-size:15px;color:var(--ink);opacity:0.82;margin:0;}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--pine);color:var(--paper);padding:64px 0 32px;margin-top:60px;}
+  .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding-bottom:44px;}
+  .footer-brand p{font-size:14px;color:rgba(238,232,218,0.7);max-width:260px;margin-top:14px;}
+  .footer-col h4{font-family:'Work Sans',sans-serif;font-weight:500;font-size:14px;color:var(--paper);margin-bottom:16px;}
+  .footer-col ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;}
+  .footer-col a,.footer-col li{font-size:14px;color:rgba(238,232,218,0.7);}
+  .footer-col a:hover{color:var(--gold);}
+  .footer-bottom{display:flex;justify-content:space-between;padding-top:24px;font-size:13px;color:rgba(238,232,218,0.5);}
+
+  @media (max-width:860px){
+    .wrap{padding:0 22px;}
+    .nav{padding:16px 22px;}
+    .nav-links{display:none;}
+    .nav-toggle{display:flex;}
+    .nav-links.open{
+      display:flex;flex-direction:column;align-items:stretch;gap:0;
+      position:absolute;top:100%;left:0;right:0;
+      background:var(--paper);
+      border-bottom:1px solid var(--line);
+      box-shadow:0 8px 16px rgba(0,0,0,0.06);
+    }
+    .nav-links.open a{
+      padding:15px 22px;
+      border-top:1px solid var(--line);
+      font-size:16px;
+    }
+    .hero{grid-template-columns:1fr;padding:44px 0 0;gap:28px;}
+    .hero-copy{padding-bottom:36px;}
+    .hero-art{order:-1;aspect-ratio:4/3;margin-bottom:28px;}
+    .hero-copy h1{font-size:32px;}
+    .hero-copy p{font-size:16px;}
+    .hero-ctas{flex-direction:column;gap:12px;}
+    .hero-ctas .btn{width:100%;padding:15px 26px;}
+    .hero-nav{width:42px;height:42px;font-size:20px;}
+    .stat-strip .wrap{
+      display:grid;grid-template-columns:1fr 1fr;
+      gap:20px 0;padding:24px 22px;
+    }
+    .stat{padding-right:16px;}
+    .stat:nth-child(odd){border-left:none;padding-left:0;}
+    .stat:nth-child(even){border-left:1px solid var(--line);padding-left:16px;}
+    .stat:nth-child(n+3){border-top:1px solid var(--line);padding-top:18px;}
+    .stat b{font-size:21px;}
+    .section-head{padding:56px 0 4px;}
+    .section-head h2{font-size:28px;}
+    .service-row{padding:36px 0;gap:20px;}
+    .service-row,.service-row.reverse{grid-template-columns:1fr;direction:ltr;}
+    .service-photo{display:none;}
+    .service-photo-mobile{display:flex;flex-direction:column;gap:10px;}
+    .service-text h3{font-size:22px;}
+    .more-services{flex-direction:column;align-items:flex-start;padding:28px 0 48px;gap:16px;}
+    .more-services p{font-size:18px;}
+    .quote-section{padding:56px 0;margin-top:56px;}
+    .quote-grid{grid-template-columns:1fr;gap:36px;}
+    .quote-grid h2{font-size:27px;}
+    .form-row{grid-template-columns:1fr;}
+    .why-us{padding:56px 0;margin-top:56px;}
+    .why-grid{grid-template-columns:1fr;gap:32px;margin-top:32px;}
+    footer{padding:48px 0 24px;}
+    .footer-grid{grid-template-columns:1fr 1fr;gap:32px 24px;}
+    .footer-brand{grid-column:1 / -1;}
+    .footer-bottom{flex-direction:column;gap:8px;align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="logo">
+      <img src="logo.jpg" alt="Martinez Pro Services logo" style="height:44px;width:44px;border-radius:8px;object-fit:cover;display:block;">
+    </div>
+    <nav class="nav-links" id="navLinks">
+      <a href="#services">Our work</a>
+      <a href="#why-us">Why us</a>
+      <a href="#quote">Contact</a>
+    </nav>
+    <div class="nav-right">
+      <a href="tel:7209879855" class="phone-pill">(720) 987-9855</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <section class="hero">
+    <div class="hero-copy">
+      <h1>Land shaped for how you actually live outside.</h1>
+      <p>Martinez Pro Services designs and builds landscapes, low-water yards, gardens, and lawns across the Denver metro area, from the first sketch to the last stone set.</p>
+      <div class="hero-ctas">
+        <a href="tel:7209879855" class="btn btn-primary">Call (720) 987-9855</a>
+        <a href="#quote" class="btn btn-secondary">Get a free quote</a>
+        <a href="#services" class="btn btn-secondary">See our work</a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <div class="hero-slide active" style="background-image:url('images/hardscape-after.jpg')"></div>
+      <div class="hero-slide" style="background-image:url('images/garden-after.jpg')"></div>
+      <div class="hero-slide" style="background-image:url('images/xeriscape-after.jpg')"></div>
+      <div class="hero-slide" style="background-image:url('images/fence-after.jpg')"></div>
+      <button class="hero-nav prev" aria-label="Previous photo" onclick="heroSliderNav(-1)">&#8249;</button>
+      <button class="hero-nav next" aria-label="Next photo" onclick="heroSliderNav(1)">&#8250;</button>
+    </div>
+  </section>
+</div>
+
+<div class="stat-strip">
+  <div class="wrap">
+    <div class="stat"><b>14 years</b><span>Building outdoor spaces</span></div>
+    <div class="stat"><b>220+</b><span>Projects completed</span></div>
+    <div class="stat"><b>Free Estimates</b><span>No-obligation estimates and site visits</span></div>
+    <div class="stat"><b>Denver Metro</b><span>Entire metro area served</span></div>
+  </div>
+</div>
+
+<div class="wrap" id="services">
+  <div class="section-head">
+    <h2>Work organized by what you're trying to change.</h2>
+    <p>See our work before and after Martinez Pro Services started.</p>
+  </div>
+
+  <!-- 1. Hardscaping -->
+  <div class="service-row" id="service-hardscaping">
+    <div class="service-photo">
+      <span class="service-tag">Before</span>
+      <span class="service-tag after-tag">After</span>
+      <div class="base"><div style="background-image:url('images/hardscape-after.jpg')"></div></div>
+      <div class="after"><div style="background-image:url('images/hardscape-before.jpg')"></div></div>
+      <span class="photo-hint hover-hint">Hover to see before</span>
+      <span class="photo-hint before-label">Before</span>
+    </div>
+    <div class="service-photo-mobile">
+      <div class="mobile-photo-item"><span class="mobile-tag">Before</span><img src="images/hardscape-before.jpg" alt="Sloped, unfinished yard, Centennial"></div>
+      <div class="mobile-photo-item"><span class="mobile-tag mobile-tag-after">After</span><img src="images/hardscape-after.jpg" alt="Retaining wall and plantings, Centennial"></div>
+    </div>
+    <div class="service-text">
+      <h3>Hardscaping</h3>
+      <p>Flagstone, pavers, walkways, retaining walls, and more built to hold up through Front Range freeze-thaw cycles.</p>
+      <a href="#quote" class="service-link">Ask about a hardscaping project</a>
+    </div>
+  </div>
+
+  <!-- 2. Xeriscaping -->
+  <div class="service-row reverse" id="service-xeriscaping">
+    <div class="service-photo">
+      <span class="service-tag">Before</span>
+      <span class="service-tag after-tag">After</span>
+      <div class="base"><div style="background-image:url('images/xeriscape-after.jpg')"></div></div>
+      <div class="after"><div style="background-image:url('images/xeriscape-before.jpg')"></div></div>
+      <span class="photo-hint hover-hint">Hover to see before</span>
+      <span class="photo-hint before-label">Before</span>
+    </div>
+    <div class="service-photo-mobile">
+      <div class="mobile-photo-item"><span class="mobile-tag">Before</span><img src="images/xeriscape-before.jpg" alt="Dead lawn before conversion"></div>
+      <div class="mobile-photo-item"><span class="mobile-tag mobile-tag-after">After</span><img src="images/xeriscape-after.jpg" alt="Turf, rock, and drought-tolerant beds"></div>
+    </div>
+    <div class="service-text">
+      <h3>Xeriscaping</h3>
+      <p>Turf replacement with drought-tolerant plants, mulch, rock, and drip irrigation, cutting water use without leaving the yard bare.</p>
+      <a href="#quote" class="service-link">Ask about a xeriscape conversion</a>
+    </div>
+  </div>
+
+  <!-- 3. Garden and planting design -->
+  <div class="service-row" id="service-gardening">
+    <div class="service-photo">
+      <span class="service-tag">Before</span>
+      <span class="service-tag after-tag">After</span>
+      <div class="base"><div style="background-image:url('images/garden-after.jpg')"></div></div>
+      <div class="after"><div style="background-image:url('images/garden-before.jpg')"></div></div>
+      <span class="photo-hint hover-hint">Hover to see before</span>
+      <span class="photo-hint before-label">Before</span>
+    </div>
+    <div class="service-photo-mobile">
+      <div class="mobile-photo-item"><span class="mobile-tag">Before</span><img src="images/garden-before.jpg" alt="Bare foundation bed before planting"></div>
+      <div class="mobile-photo-item"><span class="mobile-tag mobile-tag-after">After</span><img src="images/garden-after.jpg" alt="Layered rose and perennial bed"></div>
+    </div>
+    <div class="service-text">
+      <h3>Garden and planting design</h3>
+      <p>Beds planned around Colorado's water restrictions and sun exposure, using native and low-water species that still look full.</p>
+      <a href="#quote" class="service-link">Ask about a planting plan</a>
+    </div>
+  </div>
+
+  <!-- 4. Lawn care and maintenance -->
+  <div class="service-row reverse" id="service-lawn">
+    <div class="service-photo" style="background:#CFCCC4;">
+      <span class="service-tag">Before</span>
+      <span class="service-tag after-tag">After</span>
+      <div class="base"><div style="background:#CFCCC4;"></div></div>
+      <div class="after"><div style="background:#6B9A3D;"></div></div>
+      <span class="photo-hint hover-hint">Hover to see before</span>
+      <span class="photo-hint before-label">Before</span>
+    </div>
+    <div class="service-photo-mobile">
+      <div class="mobile-photo-item" style="background:#CFCCC4;"><span class="mobile-tag">Before</span></div>
+      <div class="mobile-photo-item" style="background:#6B9A3D;"><span class="mobile-tag mobile-tag-after">After</span></div>
+    </div>
+    <div class="service-text">
+      <h3>Lawn care and maintenance</h3>
+      <p>Aeration, overseeding, fertilization, and weekly mowing on a schedule built around our growing season, not a generic calendar.</p>
+      <a href="#quote" class="service-link">Ask about a maintenance plan</a>
+    </div>
+  </div>
+
+  <div class="more-services">
+    <p>Also handling irrigation, retaining walls, drainage, snow removal, and much more.</p>
+    <a href="#quote" class="service-link">Ask about anything else your yard needs</a>
+  </div>
+</div>
+
+<section class="quote-section" id="quote">
+  <div class="wrap quote-grid">
+    <div>
+      <h2>Tell us about your project.</h2>
+      <p>Send a few details below. We'll follow up with a rough estimate and a couple of times to walk the site.</p>
+      <ul class="trust-list">
+        <li>We reply within one business day</li>
+        <li>Site visits are free, with no obligation to book</li>
+        <li>We serve the entire Denver metro area</li>
+      </ul>
+      <a href="tel:7209879855" class="btn btn-call-dark">Or call (720) 987-9855</a>
+    </div>
+    <div>
+      <form id="quote-form" action="https://forms.un-static.com/forms/858b324b41d9a35e7e0a852d490a7d3853827e6c" method="POST">
+        <input type="hidden" name="redirect" value="https://martinezproservices.com/thank-you.html">
+        <div class="form-row">
+          <div>
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" placeholder="Jamie Rivera" required>
+          </div>
+          <div>
+            <label for="phone">Phone</label>
+            <input id="phone" name="phone" type="tel" placeholder="(720) 555-0100" pattern="[0-9()+\s-]{7,}" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div>
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="jamie@email.com" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div>
+            <label for="zip">Zip code</label>
+            <input id="zip" name="zip" type="text" placeholder="80112" pattern="[0-9]{5}" maxlength="5" required>
+          </div>
+          <div>
+            <label for="service">Service you need</label>
+            <select id="service" name="service">
+              <option>Hardscaping</option>
+              <option>Xeriscaping</option>
+              <option>Garden and plant design</option>
+              <option>Lawn care</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label for="details">Project details</label>
+          <textarea id="details" name="details" placeholder="Tell us about your space and what you have in mind." required></textarea>
+        </div>
+        <p class="form-note">We only use your details to reply about this request. We don't share them with anyone else.</p>
+        <button class="btn btn-primary quote-submit" type="submit">Request my quote</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="why-us" id="why-us">
+  <div class="wrap">
+    <div class="section-head" style="padding-top:0;">
+      <h2>Why homeowners choose us.</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-item">
+        <h3>One point of contact, start to finish</h3>
+        <p>The same person who scopes your project is the one who shows up to build it, so nothing gets lost between the quote and the last day on site.</p>
+      </div>
+      <div class="why-item">
+        <h3>Free, no-obligation site visits</h3>
+        <p>We walk the space with you before anything is priced, so the estimate you get reflects your yard, not a generic package.</p>
+      </div>
+      <div class="why-item">
+        <h3>Built for Colorado's climate</h3>
+        <p>Every design accounts for our freeze-thaw winters and short growing season, so what we install holds up instead of needing rework a year in.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">
+          <img src="logo.jpg" alt="Martinez Pro Services logo" style="height:44px;width:44px;border-radius:8px;object-fit:cover;display:block;">
+        </div>
+        <p>Landscapes designed and built for the entire Denver metro area.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#service-hardscaping">Hardscaping</a></li>
+          <li><a href="#service-xeriscaping">Xeriscaping</a></li>
+          <li><a href="#service-gardening">Garden design</a></li>
+          <li><a href="#service-lawn">Lawn care</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Service area</h4>
+        <ul>
+          <li>Denver</li>
+          <li>Aurora</li>
+          <li>Centennial</li>
+          <li>Littleton</li>
+          <li>Highlands Ranch</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:7209879855">(720) 987-9855</a></li>
+          <li><a href="mailto:hello@martinezproservices.com">hello@martinezproservices.com</a></li>
+          <li>Mon-Sat, 7am-6pm</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="rule-light">
+    <div class="footer-bottom">
+      <span>&copy; 2026 Martinez Pro Services</span>
+      <span>Based and operating in Colorado</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+var navToggle = document.getElementById('navToggle');
+var navLinks = document.getElementById('navLinks');
+navToggle.addEventListener('click', function(){
+  var isOpen = navLinks.classList.toggle('open');
+  navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+});
+navLinks.querySelectorAll('a').forEach(function(link){
+  link.addEventListener('click', function(){
+    navLinks.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  });
+});
+</script>
+<script>
+var heroSlides = document.querySelectorAll('.hero-slide');
+var heroCurrent = 0;
+var heroTimer = null;
+
+function heroShow(index){
+  heroSlides[heroCurrent].classList.remove('active');
+  heroCurrent = (index + heroSlides.length) % heroSlides.length;
+  heroSlides[heroCurrent].classList.add('active');
+}
+
+function heroSliderNav(direction){
+  heroShow(heroCurrent + direction);
+  restartHeroTimer();
+}
+
+function restartHeroTimer(){
+  if(heroTimer) clearInterval(heroTimer);
+  heroTimer = setInterval(function(){ heroShow(heroCurrent + 1); }, 4000);
+}
+
+if(heroSlides.length > 1){
+  restartHeroTimer();
+}
+</script>
+</body>
+</html>
