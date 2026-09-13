@@ -258,7 +258,42 @@
     white-space:nowrap;font-size:15px;
   }
 
-  /* ---------- quote section ---------- */
+  
+.more-services{
+  border-top:1px solid var(--line);
+  padding:48px 0 80px;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:24px;
+}
+.more-services-copy{max-width:620px;}
+.more-services .eyebrow{
+  display:inline-block;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--moss);
+  margin-bottom:10px;
+}
+.more-services h3{font-size:28px;margin-bottom:10px;}
+.more-services p{margin:0;font-size:15px;color:var(--ink);opacity:.8;}
+.service-chips{display:flex;flex-wrap:wrap;gap:10px;}
+.service-chips span{
+  display:inline-flex;
+  align-items:center;
+  padding:10px 14px;
+  background:var(--ochre-light);
+  border:1px solid rgba(18,18,18,.08);
+  border-radius:999px;
+  font-size:14px;
+  font-weight:500;
+  color:var(--pine);
+}
+
+/* ---------- quote section ---------- */
+
   .quote-section{background:var(--pine);color:var(--paper);padding:88px 0;margin-top:88px;scroll-margin-top:90px;}
   .quote-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:64px;}
   .quote-grid h2{color:var(--paper);font-size:34px;max-width:380px;}
@@ -479,8 +514,8 @@
     </div>
   </div>
 
-  <!-- 4. Lawn care and maintenance -->
-  <div class="service-row reverse" id="service-lawn">
+  <!-- 4. Sod and irrigation installation -->
+  <div class="service-row reverse" id="service-sod">
     <div class="service-photo" style="background:#CFCCC4;">
       <span class="service-tag">Before</span>
       <span class="service-tag after-tag">After</span>
@@ -494,15 +529,73 @@
       <div class="mobile-photo-item" style="background:#6B9A3D;"><span class="mobile-tag mobile-tag-after">After</span></div>
     </div>
     <div class="service-text">
-      <h3>Lawn care and maintenance</h3>
-      <p>Aeration, overseeding, fertilization, and weekly mowing on a schedule built around our growing season, not a generic calendar.</p>
-      <a href="#quote" class="service-link">Ask about a maintenance plan</a>
+      <h3>Sod and irrigation installation</h3>
+      <p>New sod installation, sprinkler systems, drip irrigation, repairs, and water-efficient upgrades designed for Colorado's climate and watering restrictions.</p>
+      <a href="#quote" class="service-link">Ask about sod or irrigation installation</a>
+    </div>
+  </div>
+
+  <!-- 5. Fence construction and repair -->
+  <div class="service-row" id="service-fencing">
+    <div class="service-photo">
+      <span class="service-tag">Before</span>
+      <span class="service-tag after-tag">After</span>
+      <div class="base"><div style="background-image:url('images/fence-afterB.jpg')"></div></div>
+      <div class="after"><div style="background-image:url('images/fence-before.jpg')"></div></div>
+      <span class="photo-hint hover-hint">Hover to see before</span>
+      <span class="photo-hint before-label">Before</span>
+    </div>
+    <div class="service-photo-mobile">
+      <div class="mobile-photo-item"><span class="mobile-tag">Before</span><img src="images/fence-before.jpg" alt="Old fence before replacement"></div>
+      <div class="mobile-photo-item"><span class="mobile-tag mobile-tag-after">After</span><img src="images/fence-afterB.jpg" alt="New fence installation"></div>
+    </div>
+    <div class="service-text">
+      <h3>Fence construction and repair</h3>
+      <p>Privacy fences, decorative fencing, gate installation, and fence repairs built to withstand Colorado weather while improving security and curb appeal.</p>
+      <a href="#quote" class="service-link">Ask about a fencing project</a>
+    </div>
+  </div>
+
+  <!-- 6. Tree installation and removal -->
+  <div class="service-row reverse" id="service-trees">
+    <div class="service-photo">
+      <span class="service-tag">Before</span>
+      <span class="service-tag after-tag">After</span>
+      <div class="base"><div style="background-image:url('images/tree-after.jpg')"></div></div>
+      <div class="after"><div style="background-image:url('images/tree-before.jpg')"></div></div>
+      <span class="photo-hint hover-hint">Hover to see before</span>
+      <span class="photo-hint before-label">Before</span>
+    </div>
+    <div class="service-photo-mobile">
+      <div class="mobile-photo-item"><span class="mobile-tag">Before</span><img src="images/tree-before.jpg" alt="Tree service before"></div>
+      <div class="mobile-photo-item"><span class="mobile-tag mobile-tag-after">After</span><img src="images/tree-after.jpg" alt="Tree service after"></div>
+    </div>
+    <div class="service-text">
+      <h3>Tree installation and removal</h3>
+      <p>Tree planting, removals, stump removal, and replacement planning to keep your property safe, attractive, and suited to Colorado growing conditions.</p>
+      <a href="#quote" class="service-link">Ask about tree services</a>
     </div>
   </div>
 
   <div class="more-services">
-    <p>Also handling irrigation, retaining walls, drainage, snow removal, and much more.</p>
-    <a href="#quote" class="service-link">Ask about anything else your yard needs</a>
+
+    <div class="more-services-copy">
+      <span class="eyebrow">Additional services</span>
+      <h3>Need something not shown above?</h3>
+      <p>We also take on smaller projects, repairs, and seasonal work throughout the Denver metro area.</p>
+    </div>
+
+    <div class="service-chips">
+      <span>✓ Lawn Care</span>
+      <span>✓ Drainage Solutions</span>
+      <span>✓ Retaining Walls</span>
+      <span>✓ Snow Removal</span>
+      <span>✓ Seasonal Cleanup</span>
+      <span>✓ Property Refreshes</span>
+    </div>
+
+    <a href="#quote" class="btn btn-secondary">Request a Quote</a>
+
   </div>
 </div>
 
@@ -548,7 +641,9 @@
               <option>Hardscaping</option>
               <option>Xeriscaping</option>
               <option>Garden and plant design</option>
-              <option>Lawn care</option>
+              <option>Sod and irrigation installation</option>
+              <option>Fence construction and repair</option>
+              <option>Tree installation and removal</option>
               <option>Other</option>
             </select>
           </div>
@@ -601,7 +696,9 @@
           <li><a href="#service-hardscaping">Hardscaping</a></li>
           <li><a href="#service-xeriscaping">Xeriscaping</a></li>
           <li><a href="#service-gardening">Garden design</a></li>
-          <li><a href="#service-lawn">Lawn care</a></li>
+          <li><a href="#service-sod">Sod & irrigation</a></li>
+          <li><a href="#service-fencing">Fence construction</a></li>
+          <li><a href="#service-trees">Tree services</a></li>
         </ul>
       </div>
       <div class="footer-col">
