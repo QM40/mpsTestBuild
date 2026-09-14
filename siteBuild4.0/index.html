@@ -292,6 +292,35 @@
   color:var(--pine);
 }
 
+  /* ---------- gallery ---------- */
+  .gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    grid-auto-rows:200px;
+    grid-auto-flow:dense;
+    gap:16px;
+    padding-bottom:88px;
+  }
+  .gallery-item{
+    position:relative;border-radius:6px;overflow:hidden;
+    cursor:pointer;
+  }
+  .gallery-item img{
+    width:100%;height:100%;object-fit:cover;display:block;
+    transition:transform 0.5s ease;
+  }
+  .gallery-item:hover img{transform:scale(1.06);}
+  .gallery-caption{
+    position:absolute;inset:auto 0 0 0;
+    padding:32px 14px 12px;
+    background:linear-gradient(to top, rgba(18,18,18,0.78), rgba(18,18,18,0));
+    color:var(--paper);font-size:13px;font-weight:500;
+  }
+  .gallery-item.big{grid-column:span 2;grid-row:span 2;}
+  .gallery-item.wide{grid-column:span 2;}
+  .gallery-item.tall{grid-row:span 2;}
+  .gallery-item.big .gallery-caption{font-size:15px;padding:44px 18px 16px;}
+
 /* ---------- quote section ---------- */
 
   .quote-section{background:var(--pine);color:var(--paper);padding:88px 0;margin-top:88px;scroll-margin-top:90px;}
@@ -381,6 +410,14 @@
     .more-services{flex-direction:column;align-items:flex-start;padding:28px 0 48px;gap:16px;}
     .more-services p{font-size:18px;}
     .quote-section{padding:56px 0;margin-top:56px;}
+    .gallery-grid{
+      grid-template-columns:repeat(2,1fr);
+      grid-auto-rows:130px;
+      gap:10px;
+      padding-bottom:48px;
+    }
+    .gallery-caption{font-size:12px;padding:24px 10px 10px;}
+    .gallery-item.big .gallery-caption{font-size:13px;padding:32px 12px 12px;}
     .quote-grid{grid-template-columns:1fr;gap:36px;}
     .quote-grid h2{font-size:27px;}
     .form-row{grid-template-columns:1fr;}
@@ -658,6 +695,59 @@
     </div>
   </div>
 </section>
+
+<div class="wrap" id="gallery">
+  <div class="section-head">
+    <h2>More of our work.</h2>
+    <p>A closer look at recent projects across the Denver metro area.</p>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item big">
+      <img src="images/everything-after.jpeg" alt="Full yard transformation">
+      <span class="gallery-caption">Full Yard Transformation</span>
+    </div>
+    <div class="gallery-item">
+      <img src="images/hardscape-after.jpg" alt="Hardscaping project">
+      <span class="gallery-caption">Hardscaping</span>
+    </div>
+    <div class="gallery-item">
+      <img src="images/garden-after.jpg" alt="Garden design project">
+      <span class="gallery-caption">Garden Design</span>
+    </div>
+    <div class="gallery-item">
+      <img src="images/xeriscape-after.jpg" alt="Xeriscaping project">
+      <span class="gallery-caption">Xeriscaping</span>
+    </div>
+    <div class="gallery-item wide">
+      <img src="images/cedarFence-after.jpeg" alt="Cedar fence project">
+      <span class="gallery-caption">Cedar Fence</span>
+    </div>
+    <div class="gallery-item">
+      <img src="images/sodIrr-after.jpeg" alt="Sod and irrigation project">
+      <span class="gallery-caption">Sod &amp; Irrigation</span>
+    </div>
+    <div class="gallery-item">
+      <img src="images/drainRocks-after.jpeg" alt="Drainage and rock work project">
+      <span class="gallery-caption">Drainage &amp; Rock Work</span>
+    </div>
+    <div class="gallery-item tall">
+      <img src="images/walkway-after.jpeg" alt="Walkway project">
+      <span class="gallery-caption">Walkway</span>
+    </div>
+    <div class="gallery-item">
+      <img src="images/fence-after.jpg" alt="Fence project">
+      <span class="gallery-caption">Fence Installation</span>
+    </div>
+    <div class="gallery-item">
+      <img src="images/fence-afterB.jpg" alt="Fence project, second view">
+      <span class="gallery-caption">Fence Installation</span>
+    </div>
+    <div class="gallery-item">
+      <img src="images/treeRemove-after.PNG" alt="Tree service project">
+      <span class="gallery-caption">Tree Care</span>
+    </div>
+  </div>
+</div>
 
 <section class="why-us" id="why-us">
   <div class="wrap">
