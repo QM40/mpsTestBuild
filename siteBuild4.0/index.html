@@ -315,7 +315,6 @@
   .gallery-item.pos-xeriscape{grid-column:1/2;grid-row:3/4;}
   .gallery-item.pos-sodirr{grid-column:2/3;grid-row:3/4;}
   .gallery-item.pos-walkway{grid-column:1/2;grid-row:4/5;}
-  .gallery-item.pos-fence{grid-column:2/3;grid-row:4/5;}
 
   .lightbox{
     position:fixed;inset:0;z-index:1000;
@@ -436,14 +435,26 @@
     .more-services{flex-direction:column;align-items:flex-start;padding:28px 0 48px;gap:16px;}
     .more-services p{font-size:18px;}
     .quote-section{padding:56px 0;}
+    
+    /* Responsive Gallery fixes */
     .gallery-section{padding:56px 0;}
     .gallery-grid{
       grid-template-columns:repeat(2,1fr);
-      grid-auto-rows:130px;
-      gap:10px;
+      grid-template-rows:auto;
+      grid-auto-rows:140px;
+      gap:12px;
+    }
+    .gallery-item[class*="pos-"]{
+      grid-column:auto;
+      grid-row:auto;
+    }
+    .gallery-item.big{
+      grid-column:1 / -1;
+      height:220px;
     }
     .gallery-caption{font-size:12px;padding:24px 10px 10px;}
-    .gallery-item.big .gallery-caption{font-size:13px;padding:32px 12px 12px;}
+    .gallery-item.big .gallery-caption{font-size:14px;padding:32px 14px 12px;}
+
     .quote-grid{grid-template-columns:1fr;gap:36px;}
     .quote-grid h2{font-size:27px;}
     .form-row{grid-template-columns:1fr;}
@@ -672,7 +683,7 @@
     </div>
     <div class="gallery-grid">
       <div class="gallery-item big pos-everything">
-        <img src="images/everything-after.jpeg" alt="Full yard transformation">
+        <img src="images/everything-after.jpg" alt="Full yard transformation">
         <span class="gallery-caption">Full Yard Transformation</span>
       </div>
       <div class="gallery-item pos-cedarfence">
@@ -696,15 +707,11 @@
         <span class="gallery-caption">Sod &amp; Irrigation</span>
       </div>
       <div class="gallery-item pos-walkway">
-        <img src="images/walkway-after.jpeg" alt="Walkway project">
+        <img src="images/walkway-after.jpg" alt="Walkway project">
         <span class="gallery-caption">Walkway</span>
       </div>
-      <div class="gallery-item pos-fence">
-        <img src="images/fence-after.jpg" alt="Fence project">
-        <span class="gallery-caption">Fence Installation</span>
-      </div>
       <div class="gallery-item big pos-drainrocks">
-        <img src="images/drainRocks-after.jpeg" alt="Drainage and rock work project">
+        <img src="images/drainRocks-after.jpg" alt="Drainage and rock work project">
         <span class="gallery-caption">Drainage &amp; Rock Work</span>
       </div>
     </div>
