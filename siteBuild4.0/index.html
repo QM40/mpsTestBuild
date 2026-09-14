@@ -247,47 +247,61 @@
 
   .more-services{
     border-top:1px solid var(--line);
-    padding:48px 0 80px;
-    display:flex;
-    flex-direction:column;
-    align-items:flex-start;
-    gap:24px;
+    padding:36px 0 72px;
+    display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
   }
-  .more-services-copy{max-width:620px;}
-  .more-services .eyebrow{
-    display:inline-block;
-    font-size:12px;
-    font-weight:600;
-    letter-spacing:.08em;
-    text-transform:uppercase;
-    color:var(--moss);
-    margin-bottom:10px;
+  .more-services p{
+    font-family:'Fraunces',serif;font-weight:500;
+    font-size:22px;color:var(--pine);opacity:1;margin:0;max-width:520px;
   }
-  .more-services h3{font-size:28px;margin-bottom:10px;}
-  .more-services p{margin:0;font-size:15px;color:var(--ink);opacity:.8;}
-  .service-chips{display:flex;flex-wrap:wrap;gap:10px;}
-  .service-chips span{
-    display:inline-flex;
-    align-items:center;
-    padding:10px 14px;
-    background:var(--ochre-light);
-    border:1px solid rgba(18,18,18,.08);
-    border-radius:999px;
-    font-size:14px;
-    font-weight:500;
-    color:var(--pine);
+  .more-services .service-link{
+    white-space:nowrap;font-size:15px;
   }
+
+  
+.more-services{
+  border-top:1px solid var(--line);
+  padding:48px 0 80px;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:24px;
+}
+.more-services-copy{max-width:620px;}
+.more-services .eyebrow{
+  display:inline-block;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--moss);
+  margin-bottom:10px;
+}
+.more-services h3{font-size:28px;margin-bottom:10px;}
+.more-services p{margin:0;font-size:15px;color:var(--ink);opacity:.8;}
+.service-chips{display:flex;flex-wrap:wrap;gap:10px;}
+.service-chips span{
+  display:inline-flex;
+  align-items:center;
+  padding:10px 14px;
+  background:var(--ochre-light);
+  border:1px solid rgba(18,18,18,.08);
+  border-radius:999px;
+  font-size:14px;
+  font-weight:500;
+  color:var(--pine);
+}
 
   /* ---------- gallery ---------- */
   .gallery-section{
-    background: var(--paper);
-    padding: 88px 0;
+    margin-top:88px;
   }
   .gallery-grid{
     display:grid;
     grid-template-columns:repeat(4,1fr);
     grid-template-rows:repeat(4,200px);
     gap:16px;
+    padding-bottom:88px;
   }
   .gallery-item{
     position:relative;border-radius:6px;overflow:hidden;
@@ -304,6 +318,8 @@
     background:linear-gradient(to top, rgba(18,18,18,0.78), rgba(18,18,18,0));
     color:var(--paper);font-size:13px;font-weight:500;
   }
+  .gallery-item.big{grid-column:span 2;grid-row:span 2;}
+  .gallery-item.wide{grid-column:span 2;}
   .gallery-item.big .gallery-caption{font-size:15px;padding:44px 18px 16px;}
 
   /* Desktop diagonal layout: two big tiles on opposite corners */
@@ -315,6 +331,7 @@
   .gallery-item.pos-xeriscape{grid-column:1/2;grid-row:3/4;}
   .gallery-item.pos-sodirr{grid-column:2/3;grid-row:3/4;}
   .gallery-item.pos-walkway{grid-column:1/2;grid-row:4/5;}
+  .gallery-item.pos-fence{grid-column:2/3;grid-row:4/5;}
 
   .lightbox{
     position:fixed;inset:0;z-index:1000;
@@ -347,8 +364,9 @@
     box-shadow:0 4px 12px rgba(0,0,0,0.3);
   }
 
-  /* ---------- quote section ---------- */
-  .quote-section{background:var(--pine);color:var(--paper);padding:88px 0;scroll-margin-top:90px;}
+/* ---------- quote section ---------- */
+
+  .quote-section{background:var(--pine);color:var(--paper);padding:88px 0;margin-top:88px;scroll-margin-top:90px;}
   .quote-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:64px;}
   .quote-grid h2{color:var(--paper);font-size:34px;max-width:380px;}
   .quote-grid > div:first-child p{color:var(--paper);opacity:0.75;font-size:16px;margin:18px 0 28px;max-width:360px;}
@@ -376,13 +394,13 @@
   .quote-submit{align-self:flex-start;margin-top:6px;}
 
   /* ---------- why us ---------- */
-  .why-us{background:var(--stone-bg);padding:88px 0;scroll-margin-top:90px;}
+  .why-us{background:var(--stone-bg);padding:88px 0;margin-top:88px;scroll-margin-top:90px;}
   .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:44px;}
   .why-item h3{font-size:21px;margin-bottom:10px;}
   .why-item p{font-size:15px;color:var(--ink);opacity:0.82;margin:0;}
 
   /* ---------- footer ---------- */
-  footer{background:var(--pine);color:var(--paper);padding:64px 0 32px;}
+  footer{background:var(--pine);color:var(--paper);padding:64px 0 32px;margin-top:60px;}
   .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding-bottom:44px;}
   .footer-brand p{font-size:14px;color:rgba(238,232,218,0.7);max-width:260px;margin-top:14px;}
   .footer-col h4{font-family:'Work Sans',sans-serif;font-weight:500;font-size:14px;color:var(--paper);margin-bottom:16px;}
@@ -434,31 +452,23 @@
     .service-text h3{font-size:22px;}
     .more-services{flex-direction:column;align-items:flex-start;padding:28px 0 48px;gap:16px;}
     .more-services p{font-size:18px;}
-    .quote-section{padding:56px 0;}
-    
-    /* Responsive Gallery fixes */
-    .gallery-section{padding:56px 0;}
+    .quote-section{padding:56px 0;margin-top:56px;}
+    .gallery-section{margin-top:56px;}
+    .gallery-item[class*="pos-"]{grid-column:auto;grid-row:auto;}
     .gallery-grid{
       grid-template-columns:repeat(2,1fr);
-      grid-template-rows:auto;
-      grid-auto-rows:140px;
-      gap:12px;
-    }
-    .gallery-item[class*="pos-"]{
-      grid-column:auto;
-      grid-row:auto;
-    }
-    .gallery-item.big{
-      grid-column:1 / -1;
-      height:220px;
+      grid-template-rows:none;
+      grid-auto-rows:130px;
+      grid-auto-flow:dense;
+      gap:10px;
+      padding-bottom:24px;
     }
     .gallery-caption{font-size:12px;padding:24px 10px 10px;}
-    .gallery-item.big .gallery-caption{font-size:14px;padding:32px 14px 12px;}
-
+    .gallery-item.big .gallery-caption{font-size:13px;padding:32px 12px 12px;}
     .quote-grid{grid-template-columns:1fr;gap:36px;}
     .quote-grid h2{font-size:27px;}
     .form-row{grid-template-columns:1fr;}
-    .why-us{padding:56px 0;}
+    .why-us{padding:56px 0;margin-top:56px;}
     .lightbox{padding:20px;}
     .lightbox-close{top:-14px;right:0;}
     .why-grid{grid-template-columns:1fr;gap:32px;margin-top:32px;}
@@ -675,72 +685,6 @@
   </div>
 </div>
 
-<section class="gallery-section" id="gallery">
-  <div class="wrap">
-    <div class="section-head" style="padding-top:0;">
-      <h2>More of our work.</h2>
-      <p>A closer look at recent projects across the Denver metro area.</p>
-    </div>
-    <div class="gallery-grid">
-      <div class="gallery-item big pos-everything">
-        <img src="images/everything-after.jpg" alt="Full yard transformation">
-        <span class="gallery-caption">Full Yard Transformation</span>
-      </div>
-      <div class="gallery-item pos-cedarfence">
-        <img src="images/cedarFence-after.jpeg" alt="Cedar fence project">
-        <span class="gallery-caption">Cedar Fence</span>
-      </div>
-      <div class="gallery-item pos-hardscape">
-        <img src="images/hardscape-after.jpg" alt="Hardscaping project">
-        <span class="gallery-caption">Hardscaping</span>
-      </div>
-      <div class="gallery-item pos-garden">
-        <img src="images/garden-after.jpg" alt="Garden design project">
-        <span class="gallery-caption">Garden Design</span>
-      </div>
-      <div class="gallery-item pos-xeriscape">
-        <img src="images/xeriscape-after.jpg" alt="Xeriscaping project">
-        <span class="gallery-caption">Xeriscaping</span>
-      </div>
-      <div class="gallery-item pos-sodirr">
-        <img src="images/sodIrr-after.jpeg" alt="Sod and irrigation project">
-        <span class="gallery-caption">Sod &amp; Irrigation</span>
-      </div>
-      <div class="gallery-item pos-walkway">
-        <img src="images/walkway-after.jpg" alt="Walkway project">
-        <span class="gallery-caption">Walkway</span>
-      </div>
-      <div class="gallery-item big pos-drainrocks">
-        <img src="images/drainRocks-after.jpg" alt="Drainage and rock work project">
-        <span class="gallery-caption">Drainage &amp; Rock Work</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="why-us" id="why-us">
-  <div class="wrap">
-    <div class="section-head" style="padding-top:0;">
-      <h2>Why homeowners choose us.</h2>
-    </div>
-
-    <div class="why-grid">
-      <div class="why-item">
-        <h3>One point of contact, start to finish</h3>
-        <p>The same person who scopes your project is the one who shows up to build it, so nothing gets lost between the quote and the last day on site.</p>
-      </div>
-      <div class="why-item">
-        <h3>Free, no-obligation site visits</h3>
-        <p>We walk the space with you before anything is priced, so the estimate you get reflects your yard, not a generic package.</p>
-      </div>
-      <div class="why-item">
-        <h3>Built for Colorado's climate</h3>
-        <p>Every design accounts for our freeze-thaw winters and short growing season, so what we install holds up instead of needing rework a year in.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section class="quote-section" id="quote">
   <div class="wrap quote-grid">
     <div>
@@ -797,6 +741,76 @@
         <p class="form-note">We only use your details to reply about this request. We don't share them with anyone else.</p>
         <button class="btn btn-primary quote-submit" type="submit">Request my quote</button>
       </form>
+    </div>
+  </div>
+</section>
+
+<section class="gallery-section" id="gallery">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>More of our work.</h2>
+      <p>A closer look at recent projects across the Denver metro area.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item big pos-everything">
+        <img src="images/everything-after.jpeg" alt="Full yard transformation">
+        <span class="gallery-caption">Full Yard Transformation</span>
+      </div>
+      <div class="gallery-item wide pos-cedarfence">
+        <img src="images/cedarFence-after.jpeg" alt="Cedar fence project">
+        <span class="gallery-caption">Cedar Fence</span>
+      </div>
+      <div class="gallery-item pos-hardscape">
+        <img src="images/hardscape-after.jpg" alt="Hardscaping project">
+        <span class="gallery-caption">Hardscaping</span>
+      </div>
+      <div class="gallery-item pos-garden">
+        <img src="images/garden-after.jpg" alt="Garden design project">
+        <span class="gallery-caption">Garden Design</span>
+      </div>
+      <div class="gallery-item pos-xeriscape">
+        <img src="images/xeriscape-after.jpg" alt="Xeriscaping project">
+        <span class="gallery-caption">Xeriscaping</span>
+      </div>
+      <div class="gallery-item pos-sodirr">
+        <img src="images/sodIrr-after.jpeg" alt="Sod and irrigation project">
+        <span class="gallery-caption">Sod &amp; Irrigation</span>
+      </div>
+      <div class="gallery-item big pos-drainrocks">
+        <img src="images/drainRocks-after.jpeg" alt="Drainage and rock work project">
+        <span class="gallery-caption">Drainage &amp; Rock Work</span>
+      </div>
+      <div class="gallery-item pos-walkway">
+        <img src="images/walkway-after.jpeg" alt="Walkway project">
+        <span class="gallery-caption">Walkway</span>
+      </div>
+      <div class="gallery-item pos-fence">
+        <img src="images/fence-afterB.jpg" alt="Fence project">
+        <span class="gallery-caption">Fence Installation</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why-us" id="why-us">
+  <div class="wrap">
+    <div class="section-head" style="padding-top:0;">
+      <h2>Why homeowners choose us.</h2>
+    </div>
+
+    <div class="why-grid">
+      <div class="why-item">
+        <h3>One point of contact, start to finish</h3>
+        <p>The same person who scopes your project is the one who shows up to build it, so nothing gets lost between the quote and the last day on site.</p>
+      </div>
+      <div class="why-item">
+        <h3>Free, no-obligation site visits</h3>
+        <p>We walk the space with you before anything is priced, so the estimate you get reflects your yard, not a generic package.</p>
+      </div>
+      <div class="why-item">
+        <h3>Built for Colorado's climate</h3>
+        <p>Every design accounts for our freeze-thaw winters and short growing season, so what we install holds up instead of needing rework a year in.</p>
+      </div>
     </div>
   </div>
 </section>
